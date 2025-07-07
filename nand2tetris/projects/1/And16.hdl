@@ -1,0 +1,64 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/And16.hdl
+/**
+ * 16-bit And gate:
+ * for i = 0, ..., 15:
+ * out[i] = a[i] And b[i] 
+ */
+CHIP And16 {
+    IN a[16], b[16];
+    OUT out[16];
+
+    PARTS:
+    //// Replace this comment with your code.
+    Nand(a= a[0] , b= b[0] , out= NAB0);
+    Nand(a= NAB0, b= NAB0, out=out[0] );
+
+    Nand(a= a[1] , b= b[1] , out= NAB1);
+    Nand(a= NAB1, b= NAB1, out=out[1] );
+
+    Nand(a= a[2] , b= b[2] , out= NAB2);
+    Nand(a= NAB2, b= NAB2, out=out[2] );
+
+    Nand(a= a[3] , b= b[3] , out= NAB3);
+    Nand(a= NAB3, b= NAB3, out=out[3] );
+
+    Nand(a= a[4] , b= b[4] , out= NAB4);
+    Nand(a= NAB4, b= NAB4, out=out[4] );
+
+    Nand(a= a[5] , b= b[5] , out= NAB5);
+    Nand(a= NAB5, b= NAB5, out=out[5] );
+
+    Nand(a= a[6] , b= b[6] , out= NAB6);
+    Nand(a= NAB6, b= NAB6, out=out[6] );
+
+    Nand(a= a[7] , b= b[7] , out= NAB7);
+    Nand(a= NAB7, b= NAB7, out=out[7] );
+
+    Nand(a= a[8] , b= b[8] , out= NAB8);
+    Nand(a= NAB8, b= NAB8, out=out[8] );
+
+    Nand(a= a[9] , b= b[9] , out= NAB9);
+    Nand(a= NAB9, b= NAB9, out=out[9] );
+
+    Nand(a= a[10] , b= b[10] , out= NAB10);
+    Nand(a= NAB10, b= NAB10, out=out[10] );
+
+    Nand(a= a[11] , b= b[11] , out= NAB11);
+    Nand(a= NAB11, b= NAB11, out=out[11] );
+
+    Nand(a= a[12] , b= b[12] , out= NAB12);
+    Nand(a= NAB12, b= NAB12, out=out[12] );
+
+    Nand(a= a[13] , b= b[13] , out= NAB13);
+    Nand(a= NAB13, b= NAB13, out=out[13] );
+
+    Nand(a= a[14] , b= b[14] , out= NAB14);
+    Nand(a= NAB14, b= NAB14, out=out[14] );
+
+    Nand(a= a[15] , b= b[15] , out= NAB15);
+    Nand(a= NAB15, b= NAB15, out=out[15] );
+
+}
