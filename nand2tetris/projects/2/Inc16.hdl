@@ -12,4 +12,24 @@ CHIP Inc16 {
 
     PARTS:
     //// Replace this comment with your code.
+    Not(in= in[0], out= Nin);
+    Or(a= in[0], b= Nin, out= inc);
+
+    HalfAdder(a= in[0], b= inc, sum= out[0], carry= sum1);
+    HalfAdder(a= in[1], b= sum1, sum= out[1], carry= sum2);
+    HalfAdder(a= in[2], b= sum2, sum= out[2], carry= sum3);
+    HalfAdder(a= in[3], b= sum3, sum= out[3], carry= sum4);
+    HalfAdder(a= in[4], b= sum4, sum= out[4], carry= sum5);
+    HalfAdder(a= in[5], b= sum5, sum= out[5], carry= sum6);
+    HalfAdder(a= in[6], b= sum6, sum= out[6], carry= sum7);
+    HalfAdder(a= in[7], b= sum7, sum= out[7], carry= sum8);
+    HalfAdder(a= in[8], b= sum8, sum= out[8], carry= sum9);
+    HalfAdder(a= in[9], b= sum9, sum= out[9], carry= sum10);
+    HalfAdder(a= in[10], b= sum10, sum= out[10], carry= sum11);
+    HalfAdder(a= in[11], b= sum11, sum= out[11], carry= sum12);
+    HalfAdder(a= in[12], b= sum12, sum= out[12], carry= sum13);
+    HalfAdder(a= in[13], b= sum13, sum= out[13], carry= sum14);
+    HalfAdder(a= in[14], b= sum14, sum= out[14], carry= sum15);
+    HalfAdder(a= in[15], b= sum15, sum= out[15], carry= sum16);
+    
 }
