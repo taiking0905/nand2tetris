@@ -8,9 +8,8 @@
 // i.e. writes "black" in every pixel. When no key is pressed, the
 // program clears the screen, i.e. writes "white" in every pixel.
 
-// Put your code here.
 (LOOP)
-@SCREEN
+    @SCREEN
     D = A
     @R0
     M = D       // R0 = SCREEN 開始アドレス
@@ -20,35 +19,70 @@
 
     @KBD
     D = M
+    @BLACK
+    D;JGT
+
+(WHITE)
+    @0
+    D = A
+    @R2
+    M = D       // R2 = 0（白）
+
+    @R2
+    D = M
+
+    @R0
+    A = M
+    M = D
+
+    @R0
+    M = M + 1
+
+    @R1
+    M = M + 1
+
+    @8192
+    D = A
+    @R1
+    D = M - D   // D = R1 - 8192
+
+    @LOOP
+    D;JGE
+
     @WHITE
-    D;JEQ    // キーが押されていなければ白へ
+    0;JMP
+
+
+(BLACK)
+    @-1
+    D = A
+    @R2
+    M = D       // R2 = 0（白）
+
+    @R2
+    D = M
+
+    @R0
+    A = M
+    M = D
+
+    @R0
+    M = M + 1
+
+    @R1
+    M = M + 1
+
+    @8192
+    D = A
+    @R1
+    D = M - D   // D = R1 - 8192
+
+    @LOOP
+    D;JGE
 
     @BLACK
-    0;JMP    // キーが押されていれば黒へ
+    0;JMP
 
-    (WHITE)
-        @R0
-        A = M
-        M = 0  
-        @WRITE
-        0;JMP
-
-    (BLACK)
-        @R0
-        A = M
-        M = -1  
-        @WRITE
-        0;JMP
-
-    (WRITE)
-
-        @R0
-        M = M + 1
-        @R1
-        M = M + 1
-
-@LOOP
-0;JMP
 
 (END)
 @END
