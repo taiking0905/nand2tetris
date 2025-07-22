@@ -23,66 +23,48 @@
     D;JGT
 
 (WHITE)
-    @0
-    D = A
-    @R2
-    M = D       // R2 = 0（白）
-
-    @R2
+    @R1
     D = M
-
-    @R0
-    A = M
-    M = D
-
-    @R0
-    M = M + 1
-
-    @R1
-    M = M + 1
-
     @8192
-    D = A
-    @R1
-    D = M - D   // D = R1 - 8192
+    D = D - A
 
     @LOOP
     D;JGE
+
+    @R0
+    A = M
+    M = 0
+
+    @R0
+    M = M + 1
+
+    @R1
+    M = M + 1
 
     @WHITE
     0;JMP
 
-
 (BLACK)
-    @-1
-    D = A
-    @R2
-    M = D       // R2 = 0（白）
-
-    @R2
+    @R1
     D = M
-
-    @R0
-    A = M
-    M = D
-
-    @R0
-    M = M + 1
-
-    @R1
-    M = M + 1
-
     @8192
-    D = A
-    @R1
-    D = M - D   // D = R1 - 8192
+    D = D - A
 
     @LOOP
     D;JGE
 
+    @R0
+    A = M
+    M = -1
+
+    @R0
+    M = M + 1
+
+    @R1
+    M = M + 1
+
     @BLACK
     0;JMP
-
 
 (END)
 @END
