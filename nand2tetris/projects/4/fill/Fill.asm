@@ -1,50 +1,55 @@
 // This file is part of www.nand2tetris.org
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
-// File name: projects/4/Fill.asm
+// File name: projects/04/Fill.asm
 
 // Runs an infinite loop that listens to the keyboard input. 
 // When a key is pressed (any key), the program blackens the screen,
-// i.e. writes "black" in every pixel. When no key is pressed, 
-// the screen should be cleared.
+// i.e. writes "black" in every pixel. When no key is pressed, the
+// program clears the screen, i.e. writes "white" in every pixel.
 
-//// Replace this comment with your code.
+// Put your code here.
+(LOOP)
+@SCREEN
+    D = A
+    @R0
+    M = D       // R0 = SCREEN 開始アドレス
 
-@KBD
-D = M
-@BLACK
-D;JGT   // キーが押されていたら黒へ
+    @R1
+    M = 0       // R1 = カウンタ（0〜8191）
 
-// --- 白く塗る場合 ---
-@0
-D = A
-@WRITE
+    @KBD
+    D = M
+    @WHITE
+    D;JEQ    // キーが押されていなければ白へ
+
+    @BLACK
+    0;JMP    // キーが押されていれば黒へ
+
+    (WHITE)
+        @R0
+        A = M
+        M = 0  
+        @WRITE
+        0;JMP
+
+    (BLACK)
+        @R0
+        A = M
+        M = -1  
+        @WRITE
+        0;JMP
+
+    (WRITE)
+
+        @R0
+        M = M + 1
+        @R1
+        M = M + 1
+
+@LOOP
 0;JMP
 
-(BLACK)
-// --- 黒く塗る場合 ---
-@-1
-D = A
-
-(WRITE)
-// --- 書き込み処理 ---
-@R0
-A = M
-M = D
-
-@R0
-M = M + 1
-
-@R1
-M = M + 1
-@R1
-D = M
-@8192
-D = D - A
-@LOOP
-D;JLT   // 8192未満ならループ
-
-@R1
-M = 0   // カウンタをリセット
-@LOOP
+(END)
+@END
 0;JMP
