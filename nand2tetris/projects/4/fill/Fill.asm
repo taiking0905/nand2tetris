@@ -10,41 +10,41 @@
 
 //// Replace this comment with your code.
 
-@SCREEN
+@KBD
+D = M
+@BLACK
+D;JGT   // キーが押されていたら黒へ
+
+// --- 白く塗る場合 ---
+@0
 D = A
+@WRITE
+0;JMP
+
+(BLACK)
+// --- 黒く塗る場合 ---
+@-1
+D = A
+
+(WRITE)
+// --- 書き込み処理 ---
 @R0
+A = M
 M = D
 
-@R1 
-M = 0
+@R0
+M = M + 1
 
-(LOOP)
-    @R1
-    D = M
-    //@8192
-    @2
-    D = D -A
-    @END
-    D;JGE
+@R1
+M = M + 1
+@R1
+D = M
+@8192
+D = D - A
+@LOOP
+D;JLT   // 8192未満ならループ
 
-    @KBD
-    D = M
-    @-1
-    D;JGT
-    @0
-
-    @R0
-    A = M
-    M = D
-
-    @R0 
-    M = M + 1
-
-    @R1
-    M = M + 1
-    @LOOP
-    0;JMP
-
-(END)
-@END
+@R1
+M = 0   // カウンタをリセット
+@LOOP
 0;JMP
